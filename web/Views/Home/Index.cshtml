@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <a href="#/">Home</a> | <a href="#/tweets">tweets</a>
+</div>
+<div ng-app="myApp">
+    <script type="text/ng-template" id="template-tweets.html">
+        <div class="list-group">
+            <a href="javascript:void(0);" class="list-group-item active">
+                Tweets by Elsevier
+            </a>
+            {{errorMessageClass}}
+            Search by key: <input type="text" ng-model="search.text">
+            <span ng-repeat="item in tweets | filter:search">
+                <a href="javascript:void(0);" class="list-group-item">
+                    @*<h4 class="list-group-item-heading">{{item.id_str}}</h4>*@
+                    <p class="list-group-item-text" ng-bind-html="item.text"></p>
+                    @*todo:raw the text*@
+                </a>
+            </span>
+        </div>
+    </script>
+
+    <div ng-view></div>
+
+</div>
